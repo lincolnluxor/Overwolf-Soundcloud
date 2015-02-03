@@ -29,8 +29,8 @@ var SoundCloudAudioSource = function(player) {
             total += self.streamData[i];
         }
         self.volume = total;
-        console.log(self.streamData);
-        console.log(self.volume);
+//        console.log(self.streamData);
+//        console.log(self.volume);
     };
     setInterval(sampleAudioStream, 20);
     // public properties and methods
@@ -57,14 +57,14 @@ var SoundcloudLoader = function() {
     this.errorMessage = "";
 
     // Modified by Ray Imber to create a self contained html5 audio tag and append it to the body.
-    this.player = document.createElement('audio');
-    this.player.setAttribute('id', 'soundcloud-player');
+    this.player = document.querySelector('#sc');
+    // this.player.setAttribute('id', 'soundcloud-player');
     this.player.setAttribute('controls', '');
     this.player.setAttribute('autoplay', '');
     this.player.setAttribute('preload', '');
     this.player.setAttribute('autobuffer', '');
-    this.player.setAttribute('style', 'display:none');
-    document.body.appendChild(this.player);
+    // this.player.setAttribute('style', 'display:none');
+    // document.body.appendChild(this.player);
 
     /**
      * Loads the JSON stream data object from the URL of the track (as given in the location bar of the browser when browsing Soundcloud),
@@ -128,14 +128,23 @@ var SoundcloudLoader = function() {
         }
     };
 };
-
-document.addEventListener('DOMContentLoaded', function(){
-  var scLoader = new SoundcloudLoader();
-  scLoader.loadStream('https://soundcloud.com/monstercat/lets-be-friends-manslaughter', function(){
-    console.log("Successfully loaded soundcloud stream :-)");
-    var audioSource = new SoundCloudAudioSource(scLoader.player);
-    audioSource.playStream(scLoader.streamUrl());
-  }, function(){
-    console.log("Failed to load for some reason.");
+window.onload = function init() {
+  var player =  document.getElementById('sc');
+  var loader = new SoundcloudLoader(player);
+  var audioSource = new SoundCloudAudioSource(player);
+  var loadAndUpdate = function(trackUrl) {
+    loader.loadStream(trackUrl, function() {
+      audioSource.playStream(loader.streamUrl());
+    });
+  };
+  document.querySelector('#sc-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var trackUrl = document.querySelector('#sc-src').value;
+    loadAndUpdate(trackUrl);
   });
-});
+
+  //this is the default song/playlist that will play
+//  loader.loadStream('https://soundcloud.com/monstercat/lets-be-friends-manslaughter', function() {
+//    audioSource.playStream(loader.streamUrl());
+//  });
+}
