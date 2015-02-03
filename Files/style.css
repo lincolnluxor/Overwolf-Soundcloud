@@ -1,0 +1,136 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed,  figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+body {
+  font-size: 16px;
+  line-height: 1.2rem;
+  font-family: 'Open Sans', sans-serif;
+}
+.container {
+  background: #fff;
+  color: #080808;
+  position: relative;
+  border: 1px solid #080808;
+}
+header {
+  background: #f70;
+  color: #fff;
+  font-weight: 600;
+  padding: 15px;
+}
+.close-button:after {
+  content: '';
+  width: 22px;
+  height: 22px;
+  background: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%2214px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2014%2014%22%20style%3D%22enable-background%3Anew%200%200%2014%2014%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpolygon%20fill%3D%22%23FFF%22%20points%3D%2214%2C3%2011%2C0%207%2C4%203%2C0%200%2C3%204%2C7%200%2C11%203%2C14%207%2C10%2011%2C14%2014%2C11%2010%2C7%20%22%2F%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  right: 13px;
+  top: 13px;
+  cursor: pointer;
+  z-index: 2;
+}
+.visualizer {
+  display: block;
+  width: 100%;
+  height: 200px;
+}
+
+#menu-button {
+  border: 2px solid rgba(41, 37, 47, .3);
+  background: rgba(41, 37, 47, 1);
+  padding: 14px;
+  position: absolute;
+  bottom: 0;
+  transition: background 750ms ease-in-out;
+  user-select: none;
+}
+.menu-open #menu-button {
+  background: rgba(41, 37, 47, 0);
+}
+.hamburger {
+  position: relative;
+  width: 25px;
+  height: 20px;
+  transition: transform 750ms ease-in-out;
+}
+#menu-button:active .hamburger {
+  transition: transform 50ms;
+  transform: scale(.95);
+}
+.hamburger::before, .hamburger::after, .hamburger .inner {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  background: #ccc;
+  transform-origin: 100% 50%;
+  transition: all 750ms ease-in-out;
+}
+.hamburger::before {
+  top: -1px;
+}
+.hamburger .inner {
+  top: 9px;
+  transform-origin: 50% 50%;
+}
+.hamburger::after {
+  top: 19px;
+}
+.menu-open .hamburger {
+  transform: rotateY(-180deg);
+}
+.menu-open #menu-button:active .hamburger {
+  transform: scale(.95) rotateY(-180deg);
+}
+.menu-open .hamburger::before,
+.menu-open .hamburger::after,
+.menu-open .hamburger .inner {
+  background: rgba(41, 37, 47, 1);
+}
+.menu-open .hamburger::before {
+  transform: translate3d(-4px, 1px, 0) rotateZ(-45deg);  
+}
+.menu-open .hamburger .inner {
+  transform: rotateY(-90deg); 
+  transition: transform 375ms, background-color 750ms ease-in-out;
+}
+.menu-open .hamburger::after {
+  transform: translate3d(-4px, -1px, 0) rotateZ(45deg);  
+}
+
+.controller {
+  display: none;
+}

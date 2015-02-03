@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <link href="style.css" type="text/css" rel="stylesheet" />
+  <title>Soundcloud</title>
+  <script>
+    function dragResize(edge){
+      overwolf.windows.getCurrentWindow(function(result){
+        if (result.status=="success"){
+          overwolf.windows.dragResize(result.window.id, edge);
+        }
+      });
+    };
+
+    function dragMove(){
+      overwolf.windows.getCurrentWindow(function(result){
+        if (result.status=="success"){
+          overwolf.windows.dragMove(result.window.id);
+        }
+      });
+    };
+
+    function closeWindow(){
+      overwolf.windows.getCurrentWindow(function(result){
+        if (result.status=="success"){
+          overwolf.windows.close(result.window.id);
+        }
+      });
+    };
+
+    function openSubWindow(){
+      alert("the subwindow will only be visible inside a game");
+      overwolf.windows.obtainDeclaredWindow("SubWindow", function(result){
+        if (result.status == "success"){
+          overwolf.windows.restore(result.window.id, function(result){
+              console.log(result);
+          });
+        }
+      });
+    };
+
+    function takeScreenshot(){
+      overwolf.media.takeScreenshot(function(result){
+        if (result.status == "success"){
+          var img = document.getElementById("screenshot");
+          img.src = result.url;
+          img.onload = function() {
+            overwolf.media.shareImage(img, "Screen Shot");
+          };
+        }
+      });
+    }
+
+    function runTeamSpeak(){
+      overwolf.extensions.launch("lafgmhfbkjljkgoggomibmhlpijaofafbdhpjgif");
+    };
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header onMouseDown="dragMove()">
+      Soundcloud integration
+      <div class="close-button" onMouseDown="closeWindow()"></div>
+    </header>
+    <div class="visualizer">
+
+    </div>
+    <div id="menu-button" role="button">
+      <div class="hamburger"><div class="inner"></div></div>
+    </div>
+    <div class="controller">
+      Input the soundclound link for your song or playlist.
+      <input type="text" />
+      <button>Submit</button>
+    </div>
+  </div>
+  <script>
+    $('.menu').on('click', function(e) {
+      e.preventDefault();
+      $(this).next().toggleClass('active');
+    });
+
+    $(document).click(function (e) {
+        var containers = $('.menu, .nav');
+        if (!containers.is(e.target) && containers.has(e.target).length === 0){
+            containers.removeClass('active');
+        }
+    });
+  </script>
+</body>
+</html>

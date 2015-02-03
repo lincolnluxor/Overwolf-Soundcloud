@@ -1,0 +1,39 @@
+{
+	"manifest_version":5,
+	"type":"WebApp",
+	"meta":{
+		"name":"Soundcloud Visualizer",
+		"version":"0.0.038",
+		"minimum-overwolf-version":"0.77.10",
+		"author":"Adam Tate",
+		"icon":"soundcloud_128_orange.png",
+		"icon_gray":"soundcloud_128_white.png",
+		"description":"Soundcloud integration and visualizer"
+	},
+	"data": {
+		"start_window":"MainWindow",
+		"windows":{
+			"MainWindow":{
+					"file":"Files/index.html",
+					"resizable":true,
+          "transparent":true,
+					"size":{"width":400, "height":300},
+					"min_size":{"width":200, "height":200},
+					"max_size":{"width":600, "height":500},
+          "externally_connectable": {
+            "matches": [
+              "http://fonts.googleapis.com",
+              "http://code.jquery.com"
+            ]
+          }
+				},
+			"SubWindow":{
+					"file":"Files/subwindow.html",
+					"transparent":true,
+					"resizable":false,
+					"size":{"width":400, "height":300},
+					"in_game_only":true
+				}
+		}
+	}
+}
