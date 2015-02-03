@@ -1,9 +1,9 @@
 {
-	"manifest_version":5,
+	"manifest_version":6,
 	"type":"WebApp",
 	"meta":{
 		"name":"Soundcloud Visualizer",
-		"version":"0.0.038",
+		"version":"0.0.04",
 		"minimum-overwolf-version":"0.77.10",
 		"author":"Adam Tate",
 		"icon":"soundcloud_128_orange.png",

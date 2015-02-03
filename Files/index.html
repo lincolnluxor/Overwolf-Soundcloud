@@ -74,9 +74,9 @@
       <div class="hamburger"><div class="inner"></div></div>
     </div>
     <div class="controller">
-      Input the soundclound link for your song or playlist.
-      <input type="text" />
-      <button>Submit</button>
+      <p>Input the track link you want to play</p>
+      <form action="#" id="sc-form"><input id="sc-src" type="text" placeholder="Soundcloud link here"></input><button type="submit" class="btn"><i class="icon-ok"></i></button></form>
+      <audio id="sc"></audio>
     </div>
   </div>
   <script>
@@ -92,5 +92,7 @@
         }
     });
   </script>
+  <script src="https://connect.soundcloud.com/sdk.js"></script>
+  <script src="soundcloud.js"></script>
 </body>
 </html>
