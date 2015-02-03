@@ -1,9 +1,9 @@
 {
-	"manifest_version":6,
+	"manifest_version":8,
 	"type":"WebApp",
 	"meta":{
 		"name":"Soundcloud Visualizer",
-		"version":"0.0.04",
+		"version":"0.0.048",
 		"minimum-overwolf-version":"0.77.10",
 		"author":"Adam Tate",
 		"icon":"soundcloud_128_orange.png",
@@ -23,7 +23,10 @@
           "externally_connectable": {
             "matches": [
               "http://fonts.googleapis.com",
-              "http://code.jquery.com"
+              "http://code.jquery.com",
+              "http://netdna.bootstrapcdn.com",
+              "http://soundcloud.com",
+              "https://connect.soundcloud.com"
             ]
           }
 				},

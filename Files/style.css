@@ -35,6 +35,7 @@ body {
   font-size: 16px;
   line-height: 1.2rem;
   font-family: 'Open Sans', sans-serif;
+  overflow: hidden;
 }
 .container {
   background: #fff;
@@ -47,6 +48,9 @@ header {
   color: #fff;
   font-weight: 600;
   padding: 15px;
+}
+header img {
+  margin: -10px 10px -10px 0;
 }
 .close-button:after {
   content: '';
@@ -76,6 +80,7 @@ header {
   bottom: 0;
   transition: background 750ms ease-in-out;
   user-select: none;
+  display: none; /* temp */
 }
 .menu-open #menu-button {
   background: rgba(41, 37, 47, 0);
@@ -132,5 +137,32 @@ header {
 }
 
 .controller {
-  display: none;
+  background: url(controller-bg.png) repeat-x 0 0;
+  height: 45px;
+}
+.controller form {
+  position: relative;
+}
+.controller input {
+  color: #666;
+  padding: 11px;
+  background: #e5e5e5;
+  height: 28px;
+  border-radius: 4px;
+  line-height: 20px;
+  border: 0;
+  outline: 0;
+  margin: 2%;
+  width: 96%;
+}
+.controller button {
+  border: 0;
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  right: 12px;
+  top: 11px;
+  background: #e5e5e5;
+  cursor: pointer;
 }
