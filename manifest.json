@@ -1,9 +1,9 @@
 {
-	"manifest_version":8,
+	"manifest_version":9,
 	"type":"WebApp",
 	"meta":{
 		"name":"Soundcloud Visualizer",
-		"version":"0.0.053",
+		"version":"0.0.073",
 		"minimum-overwolf-version":"0.77.10",
 		"author":"Adam Tate",
 		"icon":"soundcloud_128_orange.png",
@@ -17,15 +17,15 @@
 					"file":"Files/index.html",
 					"resizable":true,
           "transparent":true,
-					"size":{"width":400, "height":300},
+					"size":{"width":400, "height":400},
 					"min_size":{"width":200, "height":200},
 					"max_size":{"width":600, "height":500},
           "externally_connectable": {
             "matches": [
-              "http://fonts.googleapis.com",
-              "http://code.jquery.com",
-              "http://netdna.bootstrapcdn.com",
-              "//api.soundcloud.com",
+              "https://fonts.googleapis.com",
+              "https://code.jquery.com",
+              "https://netdna.bootstrapcdn.com",
+              "https://api.soundcloud.com",
               "https://*.soundcloud.com"
             ]
           }

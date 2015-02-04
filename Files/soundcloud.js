@@ -21,6 +21,8 @@ var SoundCloudAudioSource = function(player) {
     var source = audioCtx.createMediaElementSource(player);
     source.connect(analyser);
     analyser.connect(audioCtx.destination);
+    var canvas = document.querySelector('canvas');
+    var context = canvas.getContext('2d');
     var sampleAudioStream = function() {
         analyser.getByteFrequencyData(self.streamData);
         // calculate an overall volume value
@@ -29,8 +31,28 @@ var SoundCloudAudioSource = function(player) {
             total += self.streamData[i];
         }
         self.volume = total;
-//        console.log(self.streamData);
 //        console.log(self.volume);
+//        console.log(self.streamData[0]);
+        var draw = function() {
+          for(bin = 0; bin < self.streamData.length; bin ++) {
+            var val = self.streamData[bin];
+//            var red = 255 - val;
+            var red = 0;
+//            var green = Math.ceil(val / .5);
+            var green = 255;
+//            console.log(green);
+            var blue = val;
+            context.fillStyle = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
+//            context.fillStyle = 'rgb(0,0,0)';
+            context.fillRect(bin * 3, 270 - val, 1, 270);
+          }
+        }
+        var clear = function() {
+          context.fillStyle = 'rgb(0,0,0)';
+          context.fillRect(0,0,398,270);
+        }
+        clear();
+        draw();
     };
     setInterval(sampleAudioStream, 20);
     // public properties and methods
@@ -56,15 +78,11 @@ var SoundcloudLoader = function() {
     this.streamUrl = "";
     this.errorMessage = "";
 
-    // Modified by Ray Imber to create a self contained html5 audio tag and append it to the body.
     this.player = document.querySelector('#sc');
-    // this.player.setAttribute('id', 'soundcloud-player');
     this.player.setAttribute('controls', '');
     this.player.setAttribute('autoplay', '');
     this.player.setAttribute('preload', '');
     this.player.setAttribute('autobuffer', '');
-    // this.player.setAttribute('style', 'display:none');
-    // document.body.appendChild(this.player);
 
     /**
      * Loads the JSON stream data object from the URL of the track (as given in the location bar of the browser when browsing Soundcloud),
@@ -144,7 +162,7 @@ window.onload = function init() {
   });
 
   //this is the default song/playlist that will play
-//  loader.loadStream('https://soundcloud.com/monstercat/lets-be-friends-manslaughter', function() {
-//    audioSource.playStream(loader.streamUrl());
-//  });
+  loader.loadStream('https://soundcloud.com/monstercat/lets-be-friends-manslaughter', function() {
+    audioSource.playStream(loader.streamUrl());
+  });
 }
