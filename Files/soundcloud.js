@@ -44,23 +44,32 @@ var SoundCloudAudioSource = function(player) {
             var val = self.streamData[bin];
             
             //line based
-            var red = val;
-            var green = 0;
-            var blue = 255 - val;
-            context.fillStyle = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
+//            var red = val;
+//            var green = 0;
+//            var blue = 255 - val;
+//            context.fillStyle = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
+            
+            //line based 2
+            var h = Math.floor((self.volume / 66.667));
+            var s = Math.floor(val / 2.55); //0 none 100 full
+            var l = 50;
+            var a = 1;
+            context.fillStyle = 'hsla(' + h + ',' + s + '%,' + l + '%,' + a + ')';
+            
+            //for both line based
             context.fillRect(bin * 4, 270 - val, 3, 270);
             
             //arc based
-//            var red = 0;
-//            var green = val;
+//            var red = val;
+//            var green = 0;
 //            var blue = 0;
 //            context.beginPath();
-//            context.arc(10,centerY,bin*2, 0 , (val / 177.5),false);
+//            context.arc(10,canvas.height/2,bin*2, 0 , (val / 177.5),false);
 //            context.lineWidth = 2;
 //            context.strokeStyle = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
 //            context.stroke();
 //            context.beginPath();
-//            context.arc(10,centerY,bin*2, 0, (Math.PI * 2) - (val / 177.5),true);
+//            context.arc(10,canvas.height/2,bin*2, 0, (Math.PI * 2) - (val / 177.5),true);
 //            context.lineWidth = 2;
 //            context.strokeStyle = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
 //            context.stroke();
@@ -76,11 +85,16 @@ var SoundCloudAudioSource = function(player) {
 //            
 //            context.beginPath();
 //            context.fillStyle = 'rgb(0,' + green + ',0)';
-//            for (var i = 0; i < n +1; i++) {
+//            for (var i = 0; i < n + 1; i++) {
 //              x = Math.round(points[bin].x + r * Math.cos(2 * Math.PI * i / n));
 //              y = Math.round(points[bin].y + r * Math.sin(2 * Math.PI * i / n));
 //              context.lineTo(x, y);
 //              if (i === 0) {
+                
+//                points.push({x:x, y:y});
+                
+//                points.push({x:x, y:Math.sin(x*3)*5+(canvas.height/2)});
+                
 //                if (bin === Math.round(self.streamData.length / 2)) {
 //                  points.push({x:0, y:Math.sin(x*5)*35+(canvas.height/2)});
 //                } else if (bin < Math.round(self.streamData.length / 2)) {
