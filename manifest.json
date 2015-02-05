@@ -1,9 +1,9 @@
 {
-	"manifest_version":9,
+	"manifest_version":10,
 	"type":"WebApp",
 	"meta":{
 		"name":"Soundcloud Visualizer",
-		"version":"0.0.076",
+		"version":"0.0.0761",
 		"minimum-overwolf-version":"0.77.10",
 		"author":"Adam Tate",
 		"icon":"soundcloud_128_orange.png",
@@ -14,30 +14,20 @@
 		"start_window":"MainWindow",
 		"windows":{
 			"MainWindow":{
-					"file":"Files/index.html",
-					"resizable":true,
-          "transparent":true,
-					"size":{"width":400, "height":400},
-					"min_size":{"width":200, "height":200},
-					"max_size":{"width":600, "height":500},
-          "externally_connectable": {
-            "matches": [
-              "https://fonts.googleapis.com",
-              "https://code.jquery.com",
-              "https://netdna.bootstrapcdn.com",
-              "https://api.soundcloud.com",
-              "https://*.soundcloud.com",
-              "https://cf-media.sndcdn.com"
-            ]
-          }
-				},
+        "file":"Files/index.html",
+        "resizable":true,
+        "transparent":true,
+        "size":{"width":400, "height":400},
+        "min_size":{"width":200, "height":200},
+        "max_size":{"width":600, "height":500}
+      },
 			"SubWindow":{
-					"file":"Files/subwindow.html",
-					"transparent":true,
-					"resizable":false,
-					"size":{"width":400, "height":300},
-					"in_game_only":true
-				}
+        "file":"Files/subwindow.html",
+        "transparent":true,
+        "resizable":false,
+        "size":{"width":400, "height":300},
+        "in_game_only":true
+      }
 		}
 	}
 }
