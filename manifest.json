@@ -3,7 +3,7 @@
 	"type":"WebApp",
 	"meta":{
 		"name":"Soundcloud Visualizer",
-		"version":"0.0.073",
+		"version":"0.0.076",
 		"minimum-overwolf-version":"0.77.10",
 		"author":"Adam Tate",
 		"icon":"soundcloud_128_orange.png",
@@ -26,7 +26,8 @@
               "https://code.jquery.com",
               "https://netdna.bootstrapcdn.com",
               "https://api.soundcloud.com",
-              "https://*.soundcloud.com"
+              "https://*.soundcloud.com",
+              "https://cf-media.sndcdn.com"
             ]
           }
 				},

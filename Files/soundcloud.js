@@ -23,6 +23,8 @@ var SoundCloudAudioSource = function(player) {
     analyser.connect(audioCtx.destination);
     var canvas = document.querySelector('canvas');
     var context = canvas.getContext('2d');
+    var centerX = Math.ceil(canvas.width / 2);
+    var centerY = Math.ceil(canvas.height / 2);
     var sampleAudioStream = function() {
         analyser.getByteFrequencyData(self.streamData);
         // calculate an overall volume value
@@ -36,20 +38,34 @@ var SoundCloudAudioSource = function(player) {
         var draw = function() {
           for(bin = 0; bin < self.streamData.length; bin ++) {
             var val = self.streamData[bin];
-//            var red = 255 - val;
+            
+            //line based
             var red = 0;
-//            var green = Math.ceil(val / .5);
-            var green = 255;
-//            console.log(green);
+            var green = 255 - val;
             var blue = val;
             context.fillStyle = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
-//            context.fillStyle = 'rgb(0,0,0)';
-            context.fillRect(bin * 3, 270 - val, 1, 270);
+            context.fillRect(bin * 4, 270 - val, 3, 270);
+            
+            //arc based
+//            var red = 0;
+//            var green = val;
+//            var blue = 0;
+//            context.beginPath();
+//            context.arc(10,centerY,bin*2, 0 , (val / 177.5),false);
+//            context.lineWidth = 2;
+//            context.strokeStyle = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
+//            context.stroke();
+//            context.beginPath();
+//            context.arc(10,centerY,bin*2, 0, (Math.PI * 2) - (val / 177.5),true);
+//            context.lineWidth = 2;
+//            context.strokeStyle = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
+//            context.stroke();
+
           }
         }
         var clear = function() {
           context.fillStyle = 'rgb(0,0,0)';
-          context.fillRect(0,0,398,270);
+          context.fillRect(0,0,400,270);
         }
         clear();
         draw();
@@ -165,4 +181,7 @@ window.onload = function init() {
   loader.loadStream('https://soundcloud.com/monstercat/lets-be-friends-manslaughter', function() {
     audioSource.playStream(loader.streamUrl());
   });
+//  loader.loadStream('https://soundcloud.com/flume/hyperparadise-flume-remix', function() {
+//    audioSource.playStream(loader.streamUrl());
+//  });
 }
