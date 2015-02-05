@@ -23,8 +23,12 @@ var SoundCloudAudioSource = function(player) {
     analyser.connect(audioCtx.destination);
     var canvas = document.querySelector('canvas');
     var context = canvas.getContext('2d');
-    var centerX = Math.ceil(canvas.width / 2);
-    var centerY = Math.ceil(canvas.height / 2);
+    // this is for the hexagon based viz
+//    var points = [{x:5,y:Math.ceil(canvas.height / 2)}],
+//        r = 5,
+//        n = 6,
+//        x,
+//        y;
     var sampleAudioStream = function() {
         analyser.getByteFrequencyData(self.streamData);
         // calculate an overall volume value
@@ -40,9 +44,9 @@ var SoundCloudAudioSource = function(player) {
             var val = self.streamData[bin];
             
             //line based
-            var red = 0;
-            var green = 255 - val;
-            var blue = val;
+            var red = val;
+            var green = 0;
+            var blue = 255 - val;
             context.fillStyle = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
             context.fillRect(bin * 4, 270 - val, 3, 270);
             
@@ -60,7 +64,33 @@ var SoundCloudAudioSource = function(player) {
 //            context.lineWidth = 2;
 //            context.strokeStyle = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
 //            context.stroke();
-
+            
+            //hexagon based  - this sucks currently
+//            var green = val;
+//            context.lineWidth = 4;
+//            context.lineCap = 'round';
+//            context.shadowColor = '#000';
+//            context.shadowBlur= 16;
+//            context.fillStyle = 'rgba(0,0,0,.5)';
+//            context.moveTo(points[0].x, points[0].y);
+//            
+//            context.beginPath();
+//            context.fillStyle = 'rgb(0,' + green + ',0)';
+//            for (var i = 0; i < n +1; i++) {
+//              x = Math.round(points[bin].x + r * Math.cos(2 * Math.PI * i / n));
+//              y = Math.round(points[bin].y + r * Math.sin(2 * Math.PI * i / n));
+//              context.lineTo(x, y);
+//              if (i === 0) {
+//                if (bin === Math.round(self.streamData.length / 2)) {
+//                  points.push({x:0, y:Math.sin(x*5)*35+(canvas.height/2)});
+//                } else if (bin < Math.round(self.streamData.length / 2)) {
+//                  points.push({x:x, y:Math.sin(x*5)*35+(canvas.height/2)});
+//                } else {
+//                  points.push({x:x, y:(Math.sin(x*5)*35+(canvas.height/2))+15});
+//                }
+//              }
+//            }
+//            context.fill();
           }
         }
         var clear = function() {
@@ -178,10 +208,10 @@ window.onload = function init() {
   });
 
   //this is the default song/playlist that will play
-//  loader.loadStream('https://soundcloud.com/monstercat/lets-be-friends-manslaughter', function() {
-//    audioSource.playStream(loader.streamUrl());
-//  });
-  loader.loadStream('https://soundcloud.com/flume/hyperparadise-flume-remix', function() {
+  loader.loadStream('https://soundcloud.com/monstercat/lets-be-friends-manslaughter', function() {
     audioSource.playStream(loader.streamUrl());
   });
+//  loader.loadStream('https://soundcloud.com/flume/hyperparadise-flume-remix', function() {
+//    audioSource.playStream(loader.streamUrl());
+//  });
 }
