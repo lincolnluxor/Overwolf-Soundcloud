@@ -65,7 +65,7 @@ var SoundCloudAudioSource = function(player) {
         }
         var clear = function() {
           context.fillStyle = 'rgb(0,0,0)';
-          context.fillRect(0,0,400,270);
+          context.fillRect(0,0,canvas.width,canvas.height);
         }
         clear();
         draw();
@@ -178,10 +178,10 @@ window.onload = function init() {
   });
 
   //this is the default song/playlist that will play
-  loader.loadStream('https://soundcloud.com/monstercat/lets-be-friends-manslaughter', function() {
-    audioSource.playStream(loader.streamUrl());
-  });
-//  loader.loadStream('https://soundcloud.com/flume/hyperparadise-flume-remix', function() {
+//  loader.loadStream('https://soundcloud.com/monstercat/lets-be-friends-manslaughter', function() {
 //    audioSource.playStream(loader.streamUrl());
 //  });
+  loader.loadStream('https://soundcloud.com/flume/hyperparadise-flume-remix', function() {
+    audioSource.playStream(loader.streamUrl());
+  });
 }

@@ -28,6 +28,11 @@
         "size":{"width":400, "height":300},
         "in_game_only":true
       }
-		}
+		},
+    "externally_connectable": {
+      "matches": [
+        "overwolf-extension://*.soundcloud.com"
+      ]
+    }
 	}
 }
