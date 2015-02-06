@@ -62,6 +62,13 @@ var SoundCloudAudioSource = function(player) {
             
         //for both line based
         context.fillRect(bin * 4, 270 - val, 3, 270);
+        
+        //alternate for lines... centers the bars
+//        if (bin % 2 == 0) {
+//          context.fillRect((self.streamData.length*2)+(bin*2), 270 - val, 3, 270);
+//        } else {
+//          context.fillRect((self.streamData.length*2)-(bin*2)-2, 270 - val, 3, 270);
+//        }
             
         //arc based 1
 //        var red = val;
