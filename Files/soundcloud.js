@@ -40,7 +40,11 @@ var SoundCloudAudioSource = function(player) {
 //        console.log(self.volume);
 //        console.log(self.streamData[0]);
         var draw = function() {
+          //for all but disc
           for(bin = 0; bin < self.streamData.length; bin ++) {
+          //for disc
+//          for(bin = 0; bin < self.streamData.length; bin +=3) {
+            
             var val = self.streamData[bin];
             
             //line based
@@ -59,7 +63,7 @@ var SoundCloudAudioSource = function(player) {
             //for both line based
             context.fillRect(bin * 4, 270 - val, 3, 270);
             
-            //arc based
+            //arc based 1
 //            var red = val;
 //            var green = 0;
 //            var blue = 0;
@@ -72,6 +76,34 @@ var SoundCloudAudioSource = function(player) {
 //            context.arc(10,canvas.height/2,bin*2, 0, (Math.PI * 2) - (val / 177.5),true);
 //            context.lineWidth = 2;
 //            context.strokeStyle = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
+//            context.stroke();
+            
+            
+            //arc based 2
+//            var h = Math.floor((self.volume / 66.667));
+//            var s = Math.floor(val / 2.55); //0 none 100 full
+//            var l = Math.floor(val / 2.55);
+//            var a = 1;
+//            context.beginPath();
+//            context.arc(10,canvas.height/2,bin*2, 0 , (val / 177.5),false);
+//            context.lineWidth = 2;
+//            context.strokeStyle = 'hsla(' + h + ',' + s + '%,' + l + '%,' + a + ')';
+//            context.stroke();
+//            context.beginPath();
+//            context.arc(10,canvas.height/2,bin*2, 0, (Math.PI * 2) - (val / 177.5),true);
+//            context.lineWidth = 2;
+//            context.strokeStyle = 'hsla(' + h + ',' + s + '%,' + l + '%,' + a + ')';
+//            context.stroke();
+            
+            //disc
+//            var h = Math.floor((self.volume / 66.667));
+//            var s = Math.floor(val / 2.55); //0 none 100 full
+//            var l = Math.floor(val / 2.55);
+//            var a = 1;
+//            context.beginPath();
+//            context.arc(canvas.width/2,canvas.height/2,(bin/3)*2+25, 0 , Math.PI*2,false);
+//            context.lineWidth = 3;
+//            context.strokeStyle = 'hsla(' + h + ',' + s + '%,' + l + '%,' + a + ')';
 //            context.stroke();
             
             //hexagon based  - this sucks currently
@@ -225,7 +257,7 @@ window.onload = function init() {
   loader.loadStream('https://soundcloud.com/monstercat/lets-be-friends-manslaughter', function() {
     audioSource.playStream(loader.streamUrl());
   });
-//  loader.loadStream('https://soundcloud.com/flume/hyperparadise-flume-remix', function() {
+//  loader.loadStream('https://soundcloud.com/lincolnluxor/sets/likes', function() {
 //    audioSource.playStream(loader.streamUrl());
 //  });
 }
